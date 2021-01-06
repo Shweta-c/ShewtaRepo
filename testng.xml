@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="TestSuite" thread-count="2" parallel="tests">
+  <test name="ChromeTest">
+  <parameter name="browser" value="chrome"></parameter>
+    <classes>
+       <class name="Automation.Assignments.Login"/>
+       <class name="Automation.Assignments.Registraion"/>
+       <class name="Automation.Assignments.Test1"/>
+    </classes>
+  </test>  <!-- Test -->
+ 
+ <!--  <test name="FireFoxTest">
+  <parameter name="browser" value="Firefox"></parameter>
+    <classes>
+      <class name="Automation.Assignments.Registraion"/>
+    </classes>
+  </test> -->  <!-- Test -->
+  
+</suite> <!-- Suite -->

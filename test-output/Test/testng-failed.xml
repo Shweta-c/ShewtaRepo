@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="Failed suite [Test]" parallel="tests">
+  <parameter name="browser" value="Chrome"/>
+  <test name="ChromeTest(failed)" parallel="tests">
+    <parameter name="browser" value="Chrome"/>
+    <classes>
+      <class name="Automation.Assignments.Registraion">
+        <methods>
+          <include name="after"/>
+          <include name="after"/>
+          <include name="display"/>
+          <include name="beforeM"/>
+          <include name="beforeM"/>
+        </methods>
+      </class> <!-- Automation.Assignments.Registraion -->
+    </classes>
+  </test> <!-- ChromeTest(failed) -->
+  <test name="FireFoxTest(failed)" parallel="tests">
+    <parameter name="browser" value="Chrome"/>
+    <classes>
+      <class name="Automation.Assignments.Registraion">
+        <methods>
+          <include name="after"/>
+          <include name="after"/>
+          <include name="display" invocation-numbers="1"/>
+          <include name="beforeM"/>
+          <include name="beforeM"/>
+        </methods>
+      </class> <!-- Automation.Assignments.Registraion -->
+    </classes>
+  </test> <!-- FireFoxTest(failed) -->
+</suite> <!-- Failed suite [Test] -->
