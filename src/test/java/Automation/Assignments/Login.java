@@ -1,10 +1,7 @@
 package Automation.Assignments;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.AssertJUnit;
 import org.testng.annotations.*;
@@ -14,6 +11,7 @@ public class Login
 	public WebDriver d;
 	LoginPage lp;
 	String projectpath = System.getProperty("user.dir");
+	Properties prop;
 	
 	@BeforeMethod
 	@Parameters("browser")
@@ -21,11 +19,8 @@ public class Login
 	{
 		d=Base.getDriver(browser);
 		lp=new LoginPage(d);
-		d.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-		Properties pro=new Properties();
-		FileInputStream fs=new FileInputStream(projectpath+"\\src\\test\\java\\Automation\\Assignments\\Links.properties");	
-		pro.load(fs);
-		d.get(pro.getProperty("LoginUrl"));
+		prop=Base.loadPropFile(projectpath+"\\src\\test\\java\\Automation\\Assignments\\Links.properties");
+		d.get(prop.getProperty("LoginUrl"));
 	}
 	
 	 @DataProvider

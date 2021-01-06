@@ -1,8 +1,11 @@
 package Automation.Assignments;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -32,6 +35,7 @@ public class Base
 			d=new InternetExplorerDriver();
 		}
 		d.manage().window().maximize();
+		d.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		return d;
 	}
 	
@@ -49,11 +53,25 @@ public class Base
 			  System.out.println("Exception while taking Screenshot"+e.getMessage());
 		  }
 	  }
+	public static Properties loadPropFile(String filepath) 
+	{	
+		Properties pro=new Properties();
+		FileInputStream fs;
+		try 
+		{
+			fs=new FileInputStream(filepath);
+			pro.load(fs);
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
 	
+		return pro;	
+	}
 	public static WebDriver closeDriver()
 	{
 		d.close();
 		return d;
 	}
-	
 }

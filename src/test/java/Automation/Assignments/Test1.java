@@ -1,9 +1,7 @@
 package Automation.Assignments;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -16,7 +14,7 @@ import org.testng.annotations.Test;
 public class Test1
 {
 	public WebDriver d;
-
+	Properties prop;
 	String projectpath = System.getProperty("user.dir");
 	
 	@BeforeMethod
@@ -24,13 +22,8 @@ public class Test1
 	public void beforeM(String browser) throws IOException
 	{
 		d=Base.getDriver(browser);
-		d.manage().window().maximize();
-		d.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-		
-		Properties pro=new Properties();
-		FileInputStream fs=new FileInputStream(projectpath+"\\src\\test\\java\\Automation\\Assignments\\Links.properties");	
-		pro.load(fs);
-		d.get(pro.getProperty("WindowUrl2"));
+		prop=Base.loadPropFile(projectpath+"\\src\\test\\java\\Automation\\Assignments\\Links.properties");
+		d.get(prop.getProperty("WindowUrl2"));
 	}
 
 	@Test

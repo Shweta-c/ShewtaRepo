@@ -2,13 +2,9 @@ package Automation.Assignments;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,6 +15,7 @@ public class Registraion
 {
 	public WebDriver d;
 	RegistrationPage rp;
+	Properties prop;
 	String projectpath = System.getProperty("user.dir");
 	
 	@BeforeMethod
@@ -27,11 +24,8 @@ public class Registraion
 	{
 		d=Base.getDriver(browser);
 		rp=new RegistrationPage(d);
-		d.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-		Properties pro=new Properties();
-		FileInputStream fs=new FileInputStream(projectpath+"\\src\\test\\java\\Automation\\Assignments\\Links.properties");	
-		pro.load(fs);
-		d.get(pro.getProperty("RegisterUrl"));
+		prop=Base.loadPropFile(projectpath+"\\src\\test\\java\\Automation\\Assignments\\Links.properties");
+		d.get(prop.getProperty("RegisterUrl"));
 	}
 	
 	 @DataProvider
